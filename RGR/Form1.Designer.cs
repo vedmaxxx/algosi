@@ -51,7 +51,10 @@
             this.btn_FloydPaths = new System.Windows.Forms.Button();
             this.listBox_Matrix_lbl = new System.Windows.Forms.Label();
             this.listBox_MatrixFloyd_lbl = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // sheet
@@ -224,9 +227,10 @@
             // task
             // 
             this.task.AutoSize = true;
-            this.task.Location = new System.Drawing.Point(757, 216);
+            this.task.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.task.Location = new System.Drawing.Point(751, 216);
             this.task.Name = "task";
-            this.task.Size = new System.Drawing.Size(50, 13);
+            this.task.Size = new System.Drawing.Size(57, 15);
             this.task.TabIndex = 18;
             this.task.Text = "Задание";
             // 
@@ -268,11 +272,29 @@
             this.listBox_MatrixFloyd_lbl.TabIndex = 22;
             this.listBox_MatrixFloyd_lbl.Text = "Матрица кратчайших путей";
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(206, 347);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(100, 20);
+            this.numericUpDown1.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(203, 330);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Задать вес ребра:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 450);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.listBox_MatrixFloyd_lbl);
             this.Controls.Add(this.listBox_Matrix_lbl);
             this.Controls.Add(this.btn_FloydPaths);
@@ -297,8 +319,9 @@
             this.Controls.Add(this.Btn_drawVert);
             this.Controls.Add(this.sheet);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "РГР Вариант 1 Орашанов Максим ПРО-230Б";
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,6 +352,8 @@
         private System.Windows.Forms.Button btn_FloydPaths;
         private System.Windows.Forms.Label listBox_Matrix_lbl;
         private System.Windows.Forms.Label listBox_MatrixFloyd_lbl;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label6;
     }
 }
 

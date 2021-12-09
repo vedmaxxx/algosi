@@ -29,20 +29,28 @@ namespace RGR
     {
         public int v1, v2;
         public int weight;
-        public Edge(int v1, int v2)
+        public Edge(int v1, int v2, int weight)
         {
             
             this.v1 = v1;
             this.v2 = v2;
-            if (this.v1 != this.v2)
+            if (weight == 0)
             {
-                Random rand = new Random();
-                this.weight = rand.Next(14)+1;
+                if (this.v1 != this.v2)
+                {
+                    Random rand = new Random();
+                    this.weight = rand.Next(14) + 1;
+                }
+                else
+                {
+                    this.weight = 0;
+                }
             }
             else
             {
-                weight = 0;
+                this.weight = weight;
             }
+            
         }
     }
 

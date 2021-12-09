@@ -97,7 +97,7 @@ namespace RGR
                     }
                     if (selected1 == -1)
                     {
-                        G.drawSelectedVert(V[i].x, V[i].y);
+                        G.drawVert(V[i].x, V[i].y, V[i].num.ToString());
                         selected1 = i;
                         sheet.Image = G.GetBitmap();
                         createMatA_output();
@@ -142,7 +142,9 @@ namespace RGR
                             {
                                 G.drawSelectedVert(V[i].x, V[i].y);
                                 selected2 = i;
-                                E.Add(new Edge(selected1, selected2));
+                                
+                                E.Add(new Edge(selected1, selected2,((int)numericUpDown1.Value)));
+
                                 G.drawEdge(V[selected1], V[selected2], E[E.Count - 1], E.Count - 1);
                                 selected1 = -1;
                                 selected2 = -1;
@@ -150,7 +152,7 @@ namespace RGR
                                 //
                                 createMatA_output();
                                 changeFloydMat();
-
+                                numericUpDown1.Value = 0;
                                 break;
                             }
                         }
