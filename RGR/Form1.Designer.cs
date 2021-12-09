@@ -35,22 +35,11 @@
             this.btn_Select = new System.Windows.Forms.Button();
             this.listBox_Matrix = new System.Windows.Forms.ListBox();
             this.resultBox = new System.Windows.Forms.TextBox();
-            this.btn_BFS = new System.Windows.Forms.Button();
             this.startVert = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_DFS = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_Floyd = new System.Windows.Forms.Button();
-            this.vertFrom = new System.Windows.Forms.TextBox();
-            this.vertTo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listBox_Floyd = new System.Windows.Forms.ListBox();
-            this.task = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_FloydPaths = new System.Windows.Forms.Button();
             this.listBox_Matrix_lbl = new System.Windows.Forms.Label();
-            this.listBox_MatrixFloyd_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,24 +108,13 @@
             this.resultBox.Size = new System.Drawing.Size(248, 20);
             this.resultBox.TabIndex = 6;
             // 
-            // btn_BFS
-            // 
-            this.btn_BFS.Location = new System.Drawing.Point(19, 390);
-            this.btn_BFS.Name = "btn_BFS";
-            this.btn_BFS.Size = new System.Drawing.Size(62, 39);
-            this.btn_BFS.TabIndex = 7;
-            this.btn_BFS.Text = "Поиск в ширину";
-            this.btn_BFS.UseVisualStyleBackColor = true;
-            this.btn_BFS.Visible = false;
-            this.btn_BFS.Click += new System.EventHandler(this.BFS);
-            // 
             // startVert
             // 
             this.startVert.Location = new System.Drawing.Point(327, 416);
             this.startVert.Name = "startVert";
             this.startVert.Size = new System.Drawing.Size(31, 20);
             this.startVert.TabIndex = 8;
-            this.startVert.Visible = false;
+            this.startVert.Text = "1";
             // 
             // label1
             // 
@@ -146,7 +124,6 @@
             this.label1.Size = new System.Drawing.Size(155, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Введите начальную вершину:";
-            this.label1.Visible = false;
             // 
             // btn_DFS
             // 
@@ -156,7 +133,6 @@
             this.btn_DFS.TabIndex = 10;
             this.btn_DFS.Text = "Поиск в глубину";
             this.btn_DFS.UseVisualStyleBackColor = true;
-            this.btn_DFS.Visible = false;
             this.btn_DFS.Click += new System.EventHandler(this.DFS_print);
             // 
             // label2
@@ -168,88 +144,6 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Результат:";
             // 
-            // btn_Floyd
-            // 
-            this.btn_Floyd.Location = new System.Drawing.Point(440, 328);
-            this.btn_Floyd.Name = "btn_Floyd";
-            this.btn_Floyd.Size = new System.Drawing.Size(122, 55);
-            this.btn_Floyd.TabIndex = 12;
-            this.btn_Floyd.Text = "Найти матрицу кратчайших путей";
-            this.btn_Floyd.UseVisualStyleBackColor = true;
-            this.btn_Floyd.Click += new System.EventHandler(this.btn_Floyd_Click);
-            // 
-            // vertFrom
-            // 
-            this.vertFrom.Location = new System.Drawing.Point(516, 244);
-            this.vertFrom.Name = "vertFrom";
-            this.vertFrom.Size = new System.Drawing.Size(100, 20);
-            this.vertFrom.TabIndex = 13;
-            this.vertFrom.TextChanged += new System.EventHandler(this.vertFrom_TextChanged);
-            // 
-            // vertTo
-            // 
-            this.vertTo.Location = new System.Drawing.Point(516, 272);
-            this.vertTo.Name = "vertTo";
-            this.vertTo.Size = new System.Drawing.Size(100, 20);
-            this.vertTo.TabIndex = 14;
-            this.vertTo.TextChanged += new System.EventHandler(this.vertTo_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 244);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Из вершины";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(450, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "В вершину";
-            // 
-            // listBox_Floyd
-            // 
-            this.listBox_Floyd.FormattingEnabled = true;
-            this.listBox_Floyd.HorizontalScrollbar = true;
-            this.listBox_Floyd.Location = new System.Drawing.Point(754, 25);
-            this.listBox_Floyd.Name = "listBox_Floyd";
-            this.listBox_Floyd.Size = new System.Drawing.Size(271, 173);
-            this.listBox_Floyd.TabIndex = 17;
-            // 
-            // task
-            // 
-            this.task.AutoSize = true;
-            this.task.Location = new System.Drawing.Point(757, 216);
-            this.task.Name = "task";
-            this.task.Size = new System.Drawing.Size(50, 13);
-            this.task.TabIndex = 18;
-            this.task.Text = "Задание";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(437, 216);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 13);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Найти кратчайших путь";
-            // 
-            // btn_FloydPaths
-            // 
-            this.btn_FloydPaths.Enabled = false;
-            this.btn_FloydPaths.Location = new System.Drawing.Point(568, 326);
-            this.btn_FloydPaths.Name = "btn_FloydPaths";
-            this.btn_FloydPaths.Size = new System.Drawing.Size(122, 55);
-            this.btn_FloydPaths.TabIndex = 20;
-            this.btn_FloydPaths.Text = "Найти кратчайший путь между двумя вершинами";
-            this.btn_FloydPaths.UseVisualStyleBackColor = true;
-            this.btn_FloydPaths.Click += new System.EventHandler(this.btn_FloydPaths_Click);
-            // 
             // listBox_Matrix_lbl
             // 
             this.listBox_Matrix_lbl.AutoSize = true;
@@ -259,43 +153,23 @@
             this.listBox_Matrix_lbl.TabIndex = 21;
             this.listBox_Matrix_lbl.Text = "Матрица смежности";
             // 
-            // listBox_MatrixFloyd_lbl
-            // 
-            this.listBox_MatrixFloyd_lbl.AutoSize = true;
-            this.listBox_MatrixFloyd_lbl.Location = new System.Drawing.Point(751, 9);
-            this.listBox_MatrixFloyd_lbl.Name = "listBox_MatrixFloyd_lbl";
-            this.listBox_MatrixFloyd_lbl.Size = new System.Drawing.Size(144, 13);
-            this.listBox_MatrixFloyd_lbl.TabIndex = 22;
-            this.listBox_MatrixFloyd_lbl.Text = "Матрица кратчайших путей";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 450);
-            this.Controls.Add(this.listBox_MatrixFloyd_lbl);
+            this.ClientSize = new System.Drawing.Size(724, 450);
+            this.Controls.Add(this.sheet);
             this.Controls.Add(this.listBox_Matrix_lbl);
-            this.Controls.Add(this.btn_FloydPaths);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.task);
-            this.Controls.Add(this.listBox_Floyd);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.vertTo);
-            this.Controls.Add(this.vertFrom);
-            this.Controls.Add(this.btn_Floyd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_DFS);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.startVert);
-            this.Controls.Add(this.btn_BFS);
             this.Controls.Add(this.resultBox);
             this.Controls.Add(this.listBox_Matrix);
             this.Controls.Add(this.btn_Select);
             this.Controls.Add(this.Btn_delete);
             this.Controls.Add(this.Btn_drawEdge);
             this.Controls.Add(this.Btn_drawVert);
-            this.Controls.Add(this.sheet);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -313,22 +187,11 @@
         private System.Windows.Forms.Button btn_Select;
         private System.Windows.Forms.ListBox listBox_Matrix;
         private System.Windows.Forms.TextBox resultBox;
-        private System.Windows.Forms.Button btn_BFS;
         private System.Windows.Forms.TextBox startVert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_DFS;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Floyd;
-        private System.Windows.Forms.TextBox vertFrom;
-        private System.Windows.Forms.TextBox vertTo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBox_Floyd;
-        private System.Windows.Forms.Label task;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_FloydPaths;
         private System.Windows.Forms.Label listBox_Matrix_lbl;
-        private System.Windows.Forms.Label listBox_MatrixFloyd_lbl;
     }
 }
 

@@ -20,8 +20,6 @@ namespace RGR
             G = new DrawGraph(sheet.Width, sheet.Height);
             E = new List<Edge>();
             sheet.Image = G.GetBitmap();
-            task.Text = "Вариант 1.\nЗадан неориентированный взвешенный граф. \nС использованием алгоритма Флойда \nнайдите кратчайшие расстояния: ";
-            task.Text += "\n   1) между всеми парами вершин;\n   2) между фиксированной парой вершин.\nРазработать алгоритм решения этой задачи\nи написать программу.";
         }
         DrawGraph G;
         List<Vertex> V;
@@ -101,8 +99,6 @@ namespace RGR
                         selected1 = i;
                         sheet.Image = G.GetBitmap();
                         createMatA_output();
-                        changeFloydMat();
-
                     }
                 }
             }
@@ -115,7 +111,6 @@ namespace RGR
                 sheet.Image = G.GetBitmap();
                 //
                 createMatA_output();
-                changeFloydMat();
 
             }
             //режим рисования ребра
@@ -134,7 +129,6 @@ namespace RGR
                                 sheet.Image = G.GetBitmap();
                                 //
                                 createMatA_output();
-                                changeFloydMat();
 
                                 break;
                             }
@@ -149,8 +143,6 @@ namespace RGR
                                 sheet.Image = G.GetBitmap();
                                 //
                                 createMatA_output();
-                                changeFloydMat();
-
                                 break;
                             }
                         }
@@ -165,7 +157,6 @@ namespace RGR
                         sheet.Image = G.GetBitmap();
                         //
                         createMatA_output();
-                        changeFloydMat();
 
                     }
                 }
@@ -194,7 +185,6 @@ namespace RGR
                         flag = true;
                         //
                         createMatA_output();
-                        changeFloydMat();
 
                         break;
                     }
@@ -212,8 +202,6 @@ namespace RGR
                                 flag = true;
                                 //
                                 createMatA_output();
-                                changeFloydMat();
-
                                 break;
                             }
                         }
@@ -229,7 +217,6 @@ namespace RGR
                                     flag = true;
                                     //
                                     createMatA_output();
-                                    changeFloydMat();
                                     break;
                                 }
                             }
@@ -290,106 +277,6 @@ namespace RGR
             }
         }
 
-        //вывод матрицы кратчайших путей
-        private void changeFloydMat()
-        {
-            ResMatrix = new int[V.Count, V.Count];
-            G.fillAdjacencyMatrix(V.Count, E, ResMatrix);
-            WaysMatrix = new int[V.Count, V.Count];
-
-            Floyd();
-            //listBox_Floyd.Items.Clear();
-        }
-        private void createFloydMat_output()
-        {
-            ResMatrix = new int[V.Count, V.Count];
-            G.fillAdjacencyMatrix(V.Count, E, ResMatrix);
-            WaysMatrix = new int[V.Count, V.Count];
-
-            Floyd();
-            listBox_Floyd.Items.Clear();
-            string sOut = "   ";
-            for (int i = 0; i < V.Count; i++)
-                sOut += "\t" + (i + 1) + "      ";
-            listBox_Floyd.Items.Add(sOut);
-            sOut = "   ";
-
-            for (int i = 0; i < V.Count; i++)
-                sOut += "________";
-            listBox_Floyd.Items.Add(sOut);
-
-            for (int i = 0; i < V.Count; i++)
-            {
-                sOut = (i + 1) + " | \t";
-                for (int j = 0; j < V.Count; j++)
-                {
-                    if (i == j)
-                    {
-                        sOut += " 0 \t";
-                        continue;
-                    }
-                    if (ResMatrix[i, j] == INFINITY)
-                        sOut += " inf\t";
-                    else
-                        if (ResMatrix[i, j] < 10)
-                    {
-                        sOut += " " + ResMatrix[i, j] + "  \t";
-                    }
-                    else if (ResMatrix[i, j] < 100)
-                    {
-                        sOut += " " + ResMatrix[i, j] + " \t";
-                    }
-                    else
-                        sOut += " " + ResMatrix[i, j] + "\t";
-                }
-                listBox_Floyd.Items.Add(sOut);
-            }
-        }
-
-        private void BFS(object sender, EventArgs e)
-        {
-            string res = " ";
-            if (V.Count == 0)
-            {
-                res = "а граф-то пустой";
-                resultBox.Text = res;
-                return;
-            }
-            AMatrix = new int[V.Count, V.Count];
-            G.fillIncidenceMatrix(V.Count, E, AMatrix);
-            Queue<Vertex> q = new Queue<Vertex>();
-            
-            char c = startVert.Text[0];
-            int u = c - '1';                //индексация вершин
-            Vertex vert = V[u];         //
-            bool[] used = new bool[V.Count];
-            res = vert.num.ToString();
-
-            used[u] = true;             //пометили стартовую вершину как помеченную - пометили стартову вершину.
-            q.Enqueue(vert);            //занесли вершину в очередь
-
-            while (q.Count != 0)
-            {
-                vert = q.Peek();        
-                q.Dequeue();            //выкинули из очереди
-
-                for(int i = 0; i < V.Count; i++)
-                {
-                    if (Convert.ToBoolean(AMatrix[vert.num-1, i]))      //vert.num-1 потому что в num индексация с единицы, а здесь - с нуля
-                    {
-                        if (!used[i])
-                        {
-                            used[i] = true;
-                            q.Enqueue(V[i]); 
-                            res = res + " " + V[i].num.ToString();
-                        }
-                    }
-                }
-
-            }
-            resultBox.Text = res;
-        }
-
         private void DFS_print(object sender, EventArgs e)
         {
             
@@ -427,89 +314,6 @@ namespace RGR
             }
 
             resultBox.Text = res;                                 //заносим результат DFS в строку
-        }
-
-        private void Floyd()
-        {
-            G.fillWaysMatrix(V.Count, E, WaysMatrix);
-            //ResMatrix уже заполнена как матрица смежности
-            for (int k = 0; k < V.Count; k++)
-                for (int i = 0; i < V.Count; i++)
-                    for (int j = 0; j < V.Count; j++)
-
-                        if (ResMatrix[i, k] != INFINITY && ResMatrix[k, j] != INFINITY)
-                            if (ResMatrix[i, j] > ResMatrix[i, k] + ResMatrix[k, j])
-                            {
-                                ResMatrix[i, j] = ResMatrix[i, k] + ResMatrix[k, j];
-                                WaysMatrix[i, j] = WaysMatrix[i, k];       //k - номер вершины
-                            }
-                        
-            //изменения
-
-            string res = "алгоритм флойда сработал";
-            resultBox.Text = res;
-        }
-
-        
-        private void btn_Floyd_Click(object sender, EventArgs e)
-        {
-            createFloydMat_output();
-            btn_Floyd.Text = "Обновить матрицу кратчайших расстояний";
-        }
-
-        private void btn_FloydPaths_Click(object sender, EventArgs e)
-        {
-            string tmp = vertFrom.Text;
-            int v1 = Int32.Parse(tmp);
-
-            tmp = vertTo.Text;
-            int v2 = Int32.Parse(tmp);
-
-            FloydPathRecovery(v1, v2);
-        }
-
-        private void FloydPathRecovery(int _v1, int _v2)
-        {
-            
-            if (_v1 > V.Count || _v2 > V.Count)
-            {
-                MessageBox.Show("Введите корректные значения вершин");
-                return;
-            }
-            string res;
-            int v1 = _v1 - 1;   //уходим к индексации с нуля
-            int v2 = _v2 - 1;
-
-            if (ResMatrix[v1, v2] == INFINITY)
-            {
-                res = "Между вершинами нет пути";
-                resultBox.Text = res;
-                return;
-            }
-
-            res = _v1.ToString();
-            int tmp = v1;
-            
-
-            while (tmp != v2)
-            {
-                tmp = WaysMatrix[tmp, v2];
-                res += " -> " + (tmp + 1).ToString() ;
-            }
-            res += " (длина пути " + ResMatrix[v1, v2] + ")";
-            resultBox.Text = res;
-        }
-
-        private void vertFrom_TextChanged(object sender, EventArgs e)
-        {
-            if(vertFrom.Text != "" && vertTo.Text != "" )
-                btn_FloydPaths.Enabled = true;
-        }
-
-        private void vertTo_TextChanged(object sender, EventArgs e)
-        {
-            if (vertFrom.Text != "" && vertTo.Text != "")
-                btn_FloydPaths.Enabled = true;
         }
     }
 }
