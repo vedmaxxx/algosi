@@ -167,6 +167,7 @@ namespace RGR
                         selected1 = -1;
                         sheet.Image = G.GetBitmap();
                         //
+                        //
                         createMatA_output();
                         changeFloydMat();
 
